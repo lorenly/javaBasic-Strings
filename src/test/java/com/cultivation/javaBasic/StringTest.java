@@ -133,7 +133,19 @@ class StringTest {
 
         // TODO: Create string using StringBuilder
         // <--Start
-        StringBuilder builder = new StringBuilder("|---|\n").append("|   |\n").append("|---|\n");
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+                if(j == 0 || j == 4){
+                    builder.append("|");
+                }else if(i%2 == 0){
+                    builder.append("-");
+                }else{
+                    builder.append(" ");
+                }
+            }
+            builder.append("\n");
+        }
         // --End-->
 
         final String expected =
@@ -184,11 +196,11 @@ class StringTest {
 
         // TODO: Modify the following code to create new string from original String
         // <--Start
-        String temp = "";
+        StringBuilder temp = new StringBuilder();
         for(int i = original.length()-1; i >= 0; i--){
-            temp += original.charAt(i);
+            temp.append(original.charAt(i));
         }
-        final String reversed = temp;
+        final String reversed = temp.toString();
         // --End-->
 
         assertEquals("654321", reversed);
@@ -222,7 +234,7 @@ class StringTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expectedText = text;
+        final String expectedText = "Hello, " + name + ". Next year, you will be " + age + ".";
         // --end-->
 
         assertEquals(expectedText, text);
